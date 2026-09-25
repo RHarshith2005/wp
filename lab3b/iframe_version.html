@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3B - Book Information (Modern Iframe Equivalent)</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
+        .container { display: flex; width: 100%; height: 100vh; }
+        .left-panel { width: 30%; border-right: 3px solid #ccc; height: 100%; }
+        .right-panel { width: 70%; height: 100%; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel: Book List -->
+        <div class="left-panel">
+            <iframe src="book_list.html" name="book_list_frame" title="Book List"></iframe>
+        </div>
+        <!-- Right Panel: Book Information -->
+        <div class="right-panel">
+            <iframe src="default_info.html" name="book_info_frame" title="Book Information"></iframe>
+        </div>
+    </div>
+</body>
+</html>

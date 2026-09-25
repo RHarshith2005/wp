@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dbeafe" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#eff6ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="buildingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#64748b" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect width="1600" height="1000" fill="url(#skyGrad)"/>
+
+  <!-- Distant Mountains/Campus Greenery -->
+  <path d="M0,650 Q400,520 800,640 T1600,620 L1600,1000 L0,1000 Z" fill="#bbf7d0" opacity="0.4"/>
+  <path d="M0,720 Q500,600 1000,710 T1600,700 L1600,1000 L0,1000 Z" fill="#86efac" opacity="0.3"/>
+
+  <!-- Campus University Hall Silhouette -->
+  <!-- Main Hall -->
+  <rect x="500" y="420" width="600" height="350" fill="url(#buildingGrad)" rx="6"/>
+  <!-- Dome / Clock Tower -->
+  <rect x="730" y="260" width="140" height="180" fill="url(#buildingGrad)" rx="4"/>
+  <path d="M710,260 Q800,150 890,260 Z" fill="#475569" opacity="0.35"/>
+  <circle cx="800" cy="330" r="28" fill="#ffffff" opacity="0.5"/>
+  <circle cx="800" cy="330" r="22" fill="none" stroke="#475569" stroke-width="3" opacity="0.4"/>
+  <!-- Clock hands -->
+  <line x1="800" y1="330" x2="800" y2="315" stroke="#334155" stroke-width="3" opacity="0.5"/>
+  <line x1="800" y1="330" x2="812" y2="330" stroke="#334155" stroke-width="3" opacity="0.5"/>
+
+  <!-- Pillars / Classical Columns -->
+  <g opacity="0.3" fill="#475569">
+    <rect x="540" y="520" width="22" height="250"/>
+    <rect x="620" y="520" width="22" height="250"/>
+    <rect x="700" y="520" width="22" height="250"/>
+    <rect x="880" y="520" width="22" height="250"/>
+    <rect x="960" y="520" width="22" height="250"/>
+    <rect x="1040" y="520" width="22" height="250"/>
+    <!-- Triangular Portico -->
+    <polygon points="500,520 800,430 1100,520"/>
+  </g>
+
+  <!-- Left Wing -->
+  <rect x="180" y="500" width="340" height="270" fill="url(#buildingGrad)" rx="4"/>
+  <!-- Right Wing -->
+  <rect x="1080" y="500" width="340" height="270" fill="url(#buildingGrad)" rx="4"/>
+
+  <!-- Windows Grid -->
+  <g opacity="0.25" fill="#3b82f6">
+    <rect x="220" y="540" width="30" height="40" rx="3"/>
+    <rect x="280" y="540" width="30" height="40" rx="3"/>
+    <rect x="340" y="540" width="30" height="40" rx="3"/>
+    <rect x="400" y="540" width="30" height="40" rx="3"/>
+
+    <rect x="220" y="620" width="30" height="40" rx="3"/>
+    <rect x="280" y="620" width="30" height="40" rx="3"/>
+    <rect x="340" y="620" width="30" height="40" rx="3"/>
+    <rect x="400" y="620" width="30" height="40" rx="3"/>
+
+    <rect x="1140" y="540" width="30" height="40" rx="3"/>
+    <rect x="1200" y="540" width="30" height="40" rx="3"/>
+    <rect x="1260" y="540" width="30" height="40" rx="3"/>
+    <rect x="1320" y="540" width="30" height="40" rx="3"/>
+
+    <rect x="1140" y="620" width="30" height="40" rx="3"/>
+    <rect x="1200" y="620" width="30" height="40" rx="3"/>
+    <rect x="1260" y="620" width="30" height="40" rx="3"/>
+    <rect x="1320" y="620" width="30" height="40" rx="3"/>
+  </g>
+
+  <!-- Ground / Lawn -->
+  <rect y="770" width="1600" height="230" fill="#a7f3d0" opacity="0.4"/>
+</svg>

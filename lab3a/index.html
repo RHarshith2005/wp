@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3A - Cultural Festival Registration Form</title>
+</head>
+<body bgcolor="#fdf6e2">
+    <!-- Main Banner / Heading -->
+    <table align="center" width="85%" border="0" cellpadding="10">
+        <tr align="center" bgcolor="#6a1b9a">
+            <td>
+                <h1><font color="#ffd54f">VIBRANCE 2026</font></h1>
+                <h3><font color="#ffffff">Annual National Inter-Collegiate Cultural Festival</font></h3>
+                <p><font color="#e1bee7"><i>Organised by Student Cultural Committee | Celebrate Art, Music & Passion</i></font></p>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!-- Form Section -->
+    <form action="#" method="post">
+        <table align="center" width="85%" border="1" cellpadding="8" cellspacing="0" bgcolor="#ffffff">
+            <!-- Header Row -->
+            <tr bgcolor="#8e24aa">
+                <th colspan="2">
+                    <font color="#ffffff" size="4">Participant Registration Form</font>
+                </th>
+            </tr>
+
+            <!-- 1. Text Boxes: Personal Information -->
+            <tr bgcolor="#f3e5f5">
+                <th colspan="2" align="left">
+                    <font color="#4a148c"><b>1. Personal Details</b></font>
+                </th>
+            </tr>
+
+            <tr>
+                <td width="35%"><b>Full Name:</b></td>
+                <td>
+                    <input type="text" name="participant_name" size="40" placeholder="e.g. John Doe" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Email Address:</b></td>
+                <td>
+                    <input type="text" name="email" size="40" placeholder="e.g. johndoe@gmail.com" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Contact Number:</b></td>
+                <td>
+                    <input type="text" name="phone" size="20" maxlength="10" placeholder="10-digit mobile number" required>
+                </td>
+            </tr>
+
+            <!-- 2. Option Buttons (Radio Buttons): Gender & Category -->
+            <tr bgcolor="#f3e5f5">
+                <th colspan="2" align="left">
+                    <font color="#4a148c"><b>2. Gender & Category (Option Buttons)</b></font>
+                </th>
+            </tr>
+
+            <tr>
+                <td><b>Gender:</b></td>
+                <td>
+                    <input type="radio" id="male" name="gender" value="Male" checked>
+                    <label for="male">Male</label> &nbsp;&nbsp;
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label> &nbsp;&nbsp;
+                    <input type="radio" id="other" name="gender" value="Other">
+                    <label for="other">Other</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Participation Type:</b></td>
+                <td>
+                    <input type="radio" id="solo" name="part_type" value="Solo" checked>
+                    <label for="solo">Solo Participant</label> &nbsp;&nbsp;
+                    <input type="radio" id="team" name="part_type" value="Team">
+                    <label for="team">Team Leader / Contingent Member</label>
+                </td>
+            </tr>
+
+            <!-- 3. College & Drop-down List -->
+            <tr bgcolor="#f3e5f5">
+                <th colspan="2" align="left">
+                    <font color="#4a148c"><b>3. Institute & Academic Details (Drop-Down List)</b></font>
+                </th>
+            </tr>
+
+            <tr>
+                <td><b>Institute / College Name:</b></td>
+                <td>
+                    <input type="text" name="college_name" size="40" placeholder="e.g. National Institute of Technology" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Year of Study (Drop-down List):</b></td>
+                <td>
+                    <select name="year_of_study" required>
+                        <option value="">-- Select Your Year --</option>
+                        <option value="1st Year">1st Year (Freshman)</option>
+                        <option value="2nd Year">2nd Year (Sophomore)</option>
+                        <option value="3rd Year">3rd Year (Junior)</option>
+                        <option value="4th Year">4th Year (Senior)</option>
+                        <option value="Postgraduate">Postgraduate / Master's</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>State / Region (Drop-down List):</b></td>
+                <td>
+                    <select name="state" required>
+                        <option value="">-- Select State --</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Other">Other State</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- 4. Check Boxes: Event Selection -->
+            <tr bgcolor="#f3e5f5">
+                <th colspan="2" align="left">
+                    <font color="#4a148c"><b>4. Events to Register (Check Boxes)</b></font>
+                </th>
+            </tr>
+
+            <tr valign="top">
+                <td><b>Select Events:</b><br><small>(You may choose multiple events)</small></td>
+                <td>
+                    <table border="0" cellpadding="4" cellspacing="0">
+                        <tr>
+                            <td><input type="checkbox" id="ev1" name="events" value="Classical Dance"> <label for="ev1">Classical Dance</label></td>
+                            <td><input type="checkbox" id="ev2" name="events" value="Battle of Bands"> <label for="ev2">Battle of the Bands</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" id="ev3" name="events" value="Street Play"> <label for="ev3">Street Play (Nukkad Natak)</label></td>
+                            <td><input type="checkbox" id="ev4" name="events" value="Photography"> <label for="ev4">Spot Photography</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" id="ev5" name="events" value="Fashion Show"> <label for="ev5">Fashion Show (Vogue)</label></td>
+                            <td><input type="checkbox" id="ev6" name="events" value="General Quiz"> <label for="ev6">Mega Quiz & Debate</label></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- 5. Text Area: Additional Info / Remarks -->
+            <tr bgcolor="#f3e5f5">
+                <th colspan="2" align="left">
+                    <font color="#4a148c"><b>5. Additional Information (Text Area)</b></font>
+                </th>
+            </tr>
+
+            <tr valign="top">
+                <td>
+                    <b>College Address / Accommodation Requirements / Remarks:</b>
+                </td>
+                <td>
+                    <textarea name="remarks" rows="5" cols="45" placeholder="Enter your full address or any special equipment/accompanist accommodation requirements..."></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Declaration:</b></td>
+                <td>
+                    <input type="checkbox" id="agree" name="agreement" required>
+                    <label for="agree"><i>I agree to abide by the festival rules and campus code of conduct.</i></label>
+                </td>
+            </tr>
+
+            <!-- 6. Submit and Reset Buttons -->
+            <tr bgcolor="#f5f5f5" align="center">
+                <td colspan="2">
+                    <input type="submit" value=" Submit Registration " style="padding: 6px 16px; font-weight: bold; cursor: pointer;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="reset" value=" Reset Form " style="padding: 6px 16px; cursor: pointer;">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <br>
+    <p align="center"><small>&copy; Vibrance Cultural Committee | Lab 3A HTML Form Demonstration</small></p>
+</body>
+</html>

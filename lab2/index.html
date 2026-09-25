@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2 - Product Information</title>
+</head>
+<body bgcolor="#f4f6f9">
+    <h1 align="center">Electronics Store - Product Catalog</h1>
+    <p align="center"><b>Web Programming Lab 2:</b> Displaying product information using the HTML <code>&lt;table&gt;</code> tag.</p>
+    <hr width="90%">
+    <br>
+
+    <!-- Product Information Table -->
+    <table border="1" cellpadding="10" cellspacing="0" align="center" width="90%" bgcolor="#ffffff">
+        <!-- Main Table Header -->
+        <tr bgcolor="#2c3e50">
+            <th colspan="6">
+                <font color="#ffffff" size="5">Products Available</font>
+            </th>
+        </tr>
+
+        <!-- Column Titles -->
+        <tr bgcolor="#34495e">
+            <th><font color="#ffffff">Image</font></th>
+            <th><font color="#ffffff">Product Name</font></th>
+            <th><font color="#ffffff">Brand</font></th>
+            <th><font color="#ffffff">Category</font></th>
+            <th><font color="#ffffff">Price</font></th>
+            <th><font color="#ffffff">Key Specifications / Description</font></th>
+        </tr>
+
+        <!-- Row 1: Smartphone -->
+        <tr align="center">
+            <td>
+                <svg width="80" height="90" viewBox="0 0 100 110">
+                    <rect x="25" y="5" width="50" height="100" rx="10" fill="#1e272c" stroke="#546e7a" stroke-width="2"/>
+                    <rect x="30" y="15" width="40" height="80" rx="4" fill="#0288d1"/>
+                    <circle cx="50" cy="100" r="3" fill="#ffffff"/>
+                </svg>
+            </td>
+            <td><b>iPhone 15 Pro</b></td>
+            <td>Apple</td>
+            <td>Smartphone</td>
+            <td><font color="#27ae60"><b>&#8377; 1,34,900</b></font></td>
+            <td align="left">
+                <ul>
+                    <li>A17 Pro chip with 6-core GPU</li>
+                    <li>Titanium design with Ceramic Shield</li>
+                    <li>48MP Main camera with 3x optical zoom</li>
+                </ul>
+            </td>
+        </tr>
+
+        <!-- Row 2: Laptop -->
+        <tr align="center" bgcolor="#fcfcfc">
+            <td>
+                <svg width="90" height="80" viewBox="0 0 120 100">
+                    <rect x="20" y="15" width="80" height="55" rx="4" fill="#37474f" stroke="#78909c" stroke-width="2"/>
+                    <rect x="25" y="20" width="70" height="45" fill="#4fc3f7"/>
+                    <polygon points="10,75 110,75 118,85 2,85" fill="#90a4ae"/>
+                </svg>
+            </td>
+            <td><b>MacBook Air M3</b></td>
+            <td>Apple</td>
+            <td>Laptop</td>
+            <td><font color="#27ae60"><b>&#8377; 1,14,900</b></font></td>
+            <td align="left">
+                <ul>
+                    <li>Apple M3 chip (8-core CPU, 10-core GPU)</li>
+                    <li>13.6-inch Liquid Retina display</li>
+                    <li>Up to 18 hours battery life</li>
+                </ul>
+            </td>
+        </tr>
+
+        <!-- Row 3: Headphones -->
+        <tr align="center">
+            <td>
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                    <path d="M 20 55 A 30 30 0 0 1 80 55" fill="none" stroke="#263238" stroke-width="6"/>
+                    <rect x="15" y="50" width="14" height="25" rx="7" fill="#37474f"/>
+                    <rect x="71" y="50" width="14" height="25" rx="7" fill="#37474f"/>
+                </svg>
+            </td>
+            <td><b>WH-1000XM5</b></td>
+            <td>Sony</td>
+            <td>Audio / Headphones</td>
+            <td><font color="#27ae60"><b>&#8377; 29,990</b></font></td>
+            <td align="left">
+                <ul>
+                    <li>Industry-leading Active Noise Cancellation</li>
+                    <li>30-hour battery life with quick charging</li>
+                    <li>Crystal clear hands-free calling with 4 beamforming mics</li>
+                </ul>
+            </td>
+        </tr>
+
+        <!-- Row 4: Smartwatch -->
+        <tr align="center" bgcolor="#fcfcfc">
+            <td>
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                    <rect x="38" y="10" width="24" height="80" rx="6" fill="#455a64"/>
+                    <rect x="28" y="28" width="44" height="44" rx="10" fill="#212121" stroke="#ff7043" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="14" fill="#263238"/>
+                    <line x1="50" y1="50" x2="50" y2="42" stroke="#ff7043" stroke-width="2"/>
+                    <line x1="50" y1="50" x2="58" y2="50" stroke="#ff7043" stroke-width="2"/>
+                </svg>
+            </td>
+            <td><b>Galaxy Watch 6</b></td>
+            <td>Samsung</td>
+            <td>Wearable</td>
+            <td><font color="#27ae60"><b>&#8377; 24,999</b></font></td>
+            <td align="left">
+                <ul>
+                    <li>Sapphire Crystal Glass display</li>
+                    <li>Advanced Sleep Coaching & ECG monitoring</li>
+                    <li>Personalized HR zones for fitness</li>
+                </ul>
+            </td>
+        </tr>
+
+        <!-- Row 5: DSLR Camera -->
+        <tr align="center">
+            <td>
+                <svg width="80" height="80" viewBox="0 0 100 100">
+                    <rect x="20" y="35" width="60" height="45" rx="6" fill="#37474f"/>
+                    <rect x="35" y="25" width="20" height="10" rx="3" fill="#263238"/>
+                    <circle cx="50" cy="57" r="16" fill="#212121" stroke="#90a4ae" stroke-width="3"/>
+                    <circle cx="50" cy="57" r="8" fill="#455a64"/>
+                    <circle cx="70" cy="42" r="3" fill="#ff5252"/>
+                </svg>
+            </td>
+            <td><b>EOS R50 Mirrorless</b></td>
+            <td>Canon</td>
+            <td>Camera</td>
+            <td><font color="#27ae60"><b>&#8377; 68,995</b></font></td>
+            <td align="left">
+                <ul>
+                    <li>24.2 Megapixel APS-C CMOS Sensor</li>
+                    <li>Dual Pixel CMOS AF II with Subject Detection</li>
+                    <li>Uncropped 4K video recording up to 30p</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <hr width="90%">
+    <p align="center"><small>&copy; Product Management System - Pure HTML Table Demonstration</small></p>
+</body>
+</html>

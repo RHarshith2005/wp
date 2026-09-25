@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3B - Book Information (Frames)</title>
+</head>
+<!-- Classic HTML Frameset: Divides browser window into Left (30%) and Right (70%) -->
+<frameset cols="30%, 70%">
+    <!-- Left frame: Book List -->
+    <frame src="book_list.html" name="book_list_frame" title="Book List Frame">
+    <!-- Right frame: Book Details (Default introductory message) -->
+    <frame src="default_info.html" name="book_info_frame" title="Book Information Frame">
+    
+    <noframes>
+        <body>
+            <p>Your browser does not support frames. Please view the <a href="iframe_version.html">iframe version</a>.</p>
+        </body>
+    </noframes>
+</frameset>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Specification (a): The title should be about my college -->
+    <title>National Institute of Engineering & Technology - Official Portal</title>
+    
+    <style>
+        /* Specification (b): Put the image in the background */
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('campus_bg.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: #1e293b;
+        }
+
+        /* Top Header Container */
+        .header-section {
+            background: rgba(255, 255, 255, 0.92);
+            text-align: center;
+            padding: 30px 20px 20px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 4px solid #1e3a8a;
+        }
+
+        /* Specification (c): Place College name at the top in large text */
+        .college-name {
+            font-size: 38px;
+            font-weight: 900;
+            color: #0f172a;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Specification (c): Followed by the address in a smaller size */
+        .college-address {
+            font-size: 15px;
+            color: #475569;
+            margin: 8px 0 0 0;
+            font-style: italic;
+        }
+
+        /* Specification (e): Scrolling text with a message for upcoming exam dates, events, etc */
+        .ticker-bar {
+            background-color: #b91c1c;
+            color: #ffffff;
+            padding: 10px 0;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticker-bar marquee {
+            vertical-align: middle;
+        }
+
+        /* Content Container */
+        .main-content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 45px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-title {
+            text-align: center;
+            color: #1e3a8a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+
+        /* 
+           Specification (d): Add names of courses offered, each in a different:
+           1. Color
+           2. Style (italic, normal, oblique, underline, bold)
+           3. Typeface (font-family)
+        */
+        .courses-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .courses-list li {
+            padding: 14px 20px;
+            margin-bottom: 14px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border-left: 6px solid #cbd5e1;
+        }
+
+        /* Course 1 */
+        .course-cse {
+            color: #1d4ed8;                          /* Color: Royal Blue */
+            font-family: 'Trebuchet MS', sans-serif; /* Typeface: Trebuchet MS */
+            font-style: normal;                      /* Style: Normal Bold with Shadow */
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        /* Course 2 */
+        .course-ece {
+            color: #b91c1c;                          /* Color: Crimson Red */
+            font-family: 'Georgia', serif;           /* Typeface: Georgia */
+            font-style: italic;                      /* Style: Italic */
+            font-size: 22px;
+        }
+
+        /* Course 3 */
+        .course-me {
+            color: #15803d;                          /* Color: Forest Green */
+            font-family: 'Courier New', monospace;   /* Typeface: Courier New */
+            font-style: normal;
+            font-weight: 700;
+            text-decoration: underline;              /* Style: Underlined Monospace */
+            font-size: 21px;
+        }
+
+        /* Course 4 */
+        .course-civil {
+            color: #c2410c;                          /* Color: Rust Orange */
+            font-family: 'Arial Black', sans-serif;  /* Typeface: Arial Black */
+            font-style: normal;
+            text-transform: uppercase;               /* Style: Heavy Uppercase */
+            letter-spacing: 1px;
+            font-size: 20px;
+        }
+
+        /* Course 5 */
+        .course-aids {
+            color: #6b21a8;                          /* Color: Deep Purple */
+            font-family: 'Verdana', sans-serif;      /* Typeface: Verdana */
+            font-style: oblique;                     /* Style: Oblique */
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 20px;
+        }
+
+        /* Course 6 */
+        .course-biotech {
+            color: #0f766e;                          /* Color: Deep Teal */
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif; /* Typeface: Palatino */
+            font-style: italic;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .course-desc {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #475569;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.85);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Specification (c): College Name in large text + Address in smaller size -->
+    <div class="header-section">
+        <h1 class="college-name">National Institute of Engineering &amp; Technology</h1>
+        <p class="college-address">
+            Campus Road, Tech Innovation Enclave, Knowledge City, Bangalore - 560064, Karnataka | Tel: +91 80 2345 6789 | contact@niet.edu.in
+        </p>
+    </div>
+
+    <!-- Specification (e): Scrolling text with upcoming exam dates & events -->
+    <div class="ticker-bar">
+        <marquee behavior="scroll" direction="left" scrollamount="7" onmouseover="this.stop();" onmouseout="this.start();">
+            &#128276; <b>ANNOUNCEMENTS:</b> 
+            Mid-Semester Examinations commence from October 15, 2026 &nbsp;&bull;&nbsp; 
+            Last date for Exam Fee payment without fine: October 5, 2026 &nbsp;&bull;&nbsp; 
+            Annual Inter-College Cultural &amp; Tech Fest 'VIBRANCE 2026' on November 10-12 &nbsp;&bull;&nbsp; 
+            Campus Placement Season for Final Year students begins Monday!
+        </marquee>
+    </div>
+
+    <!-- Specification (d): Names of courses offered in different color, style, and typeface -->
+    <div class="main-content">
+        <h2 class="content-title">Academic Programs &amp; Courses Offered</h2>
+        <p>Explore undergraduate and postgraduate degrees with world-class faculty and cutting-edge laboratory facilities:</p>
+        
+        <ul class="courses-list">
+            <!-- 1. Blue, Trebuchet MS, Bold -->
+            <li>
+                <div class="course-cse">1. B.Tech in Computer Science &amp; Engineering</div>
+                <div class="course-desc">Typeface: <i>Trebuchet MS</i> | Color: <i>Royal Blue</i> | Style: <i>Bold</i></div>
+            </li>
+
+            <!-- 2. Crimson Red, Georgia, Italic -->
+            <li>
+                <div class="course-ece">2. B.Tech in Electronics &amp; Communication Engineering</div>
+                <div class="course-desc">Typeface: <i>Georgia</i> | Color: <i>Crimson Red</i> | Style: <i>Italic</i></div>
+            </li>
+
+            <!-- 3. Forest Green, Courier New, Underlined -->
+            <li>
+                <div class="course-me">3. B.Tech in Mechanical Engineering</div>
+                <div class="course-desc">Typeface: <i>Courier New</i> | Color: <i>Forest Green</i> | Style: <i>Monospace Underlined</i></div>
+            </li>
+
+            <!-- 4. Rust Orange, Arial Black, Uppercase -->
+            <li>
+                <div class="course-civil">4. B.Tech in Civil &amp; Environmental Engineering</div>
+                <div class="course-desc">Typeface: <i>Arial Black</i> | Color: <i>Rust Orange</i> | Style: <i>Heavy Uppercase</i></div>
+            </li>
+
+            <!-- 5. Deep Purple, Verdana, Oblique / Spaced -->
+            <li>
+                <div class="course-aids">5. B.Tech in Artificial Intelligence &amp; Data Science</div>
+                <div class="course-desc">Typeface: <i>Verdana</i> | Color: <i>Deep Purple</i> | Style: <i>Oblique Letter-Spaced</i></div>
+            </li>
+
+            <!-- 6. Deep Teal, Palatino, Italic Bold -->
+            <li>
+                <div class="course-biotech">6. B.Tech in Biotechnology &amp; Bioinformatics</div>
+                <div class="course-desc">Typeface: <i>Palatino Linotype</i> | Color: <i>Deep Teal</i> | Style: <i>Italic Bold</i></div>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        &copy; 2026 National Institute of Engineering &amp; Technology. All rights reserved. | Web Programming Lab Exercise 5
+    </footer>
+
+</body>
+</html>
