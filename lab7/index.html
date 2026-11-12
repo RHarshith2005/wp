@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 7: Mathematical Calculations web page performing addition, subtraction, multiplication, and division using form elements and JavaScript.">
+    <title>Lab 7 - Mathematical Calculator (Form Elements & JavaScript)</title>
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <span class="brand-badge">WP LABS</span>
+                <span class="brand-title">&larr; Back to Dashboard</span>
+            </a>
+            <div class="nav-links">
+                <span class="active-lab-tag">Lab 07: Calculator</span>
+                <a href="../lab8/index.html" class="nav-next-link">Go to Lab 8 &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+        <div class="header-intro">
+            <div class="lab-pill">Lab Exercise 07</div>
+            <h1 class="page-title">Mathematical Calculations</h1>
+            <p class="page-subtitle">
+                Perform arithmetic operations (Addition, Subtraction, Multiplication, Division) using interactive HTML form elements and vanilla JavaScript.
+            </p>
+        </div>
+
+        <div class="calculator-grid">
+            <!-- Left Card: Form Calculator -->
+            <section class="card form-card">
+                <div class="card-header">
+                    <div class="card-icon">&#128290;</div>
+                    <div>
+                        <h2 class="card-title">Arithmetic Calculation Form</h2>
+                        <p class="card-desc">Enter numeric operands and choose an arithmetic operation.</p>
+                    </div>
+                </div>
+
+                <form id="calculatorForm" class="calc-form" novalidate>
+                    <!-- Operand 1 -->
+                    <div class="form-group">
+                        <label for="num1" class="form-label">
+                            <span>First Number (Operand 1)</span>
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">#1</span>
+                            <input 
+                                type="number" 
+                                step="any" 
+                                id="num1" 
+                                name="num1" 
+                                class="form-control" 
+                                placeholder="Enter first number (e.g. 24)" 
+                                required
+                                autocomplete="off"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Operation Selector (Form Element: Radio Buttons + Dropdown Sync) -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>Select Operation</span>
+                            <span class="required-indicator">*</span>
+                        </label>
+
+                        <!-- Synchronized Dropdown Select -->
+                        <div class="select-wrapper">
+                            <select id="operationDropdown" class="form-select" aria-label="Select Mathematical Operation">
+                                <option value="add" selected>Addition (+)</option>
+                                <option value="subtract">Subtraction (&minus;)</option>
+                                <option value="multiply">Multiplication (&times;)</option>
+                                <option value="divide">Division (&divide;)</option>
+                                <option value="modulus">Modulus / Remainder (%)</option>
+                                <option value="power">Exponentiation (x&#696;)</option>
+                            </select>
+                        </div>
+
+                        <!-- Quick Operation Buttons Grid -->
+                        <div class="operator-grid" id="operatorButtonGroup" role="radiogroup" aria-label="Quick Operator Buttons">
+                            <button type="button" class="op-btn active" data-op="add" title="Addition">
+                                <span class="op-symbol">+</span>
+                                <span class="op-name">Add</span>
+                            </button>
+                            <button type="button" class="op-btn" data-op="subtract" title="Subtraction">
+                                <span class="op-symbol">&minus;</span>
+                                <span class="op-name">Subtract</span>
+                            </button>
+                            <button type="button" class="op-btn" data-op="multiply" title="Multiplication">
+                                <span class="op-symbol">&times;</span>
+                                <span class="op-name">Multiply</span>
+                            </button>
+                            <button type="button" class="op-btn" data-op="divide" title="Division">
+                                <span class="op-symbol">&divide;</span>
+                                <span class="op-name">Divide</span>
+                            </button>
+                            <button type="button" class="op-btn" data-op="modulus" title="Modulus (Remainder)">
+                                <span class="op-symbol">%</span>
+                                <span class="op-name">Modulus</span>
+                            </button>
+                            <button type="button" class="op-btn" data-op="power" title="Power / Exponentiation">
+                                <span class="op-symbol">x&#696;</span>
+                                <span class="op-name">Power</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Operand 2 -->
+                    <div class="form-group">
+                        <label for="num2" class="form-label">
+                            <span>Second Number (Operand 2)</span>
+                            <span class="required-indicator">*</span>
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-prefix">#2</span>
+                            <input 
+                                type="number" 
+                                step="any" 
+                                id="num2" 
+                                name="num2" 
+                                class="form-control" 
+                                placeholder="Enter second number (e.g. 6)" 
+                                required
+                                autocomplete="off"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Helper Tools (Swap & Negate) -->
+                    <div class="tools-row">
+                        <button type="button" id="btnSwap" class="btn-subtle" title="Swap First and Second Numbers">
+                            <span>&#8644; Swap Numbers</span>
+                        </button>
+                        <button type="button" id="btnNegate1" class="btn-subtle" title="Invert sign of Number 1">
+                            <span>&plusmn; Negate #1</span>
+                        </button>
+                        <button type="button" id="btnNegate2" class="btn-subtle" title="Invert sign of Number 2">
+                            <span>&plusmn; Negate #2</span>
+                        </button>
+                    </div>
+
+                    <!-- Primary Action Buttons -->
+                    <div class="action-buttons">
+                        <button type="submit" id="btnCalculate" class="btn btn-primary">
+                            <span class="btn-icon">&#9881;</span>
+                            <span>Calculate</span>
+                        </button>
+                        <button type="button" id="btnReset" class="btn btn-secondary">
+                            <span class="btn-icon">&#10227;</span>
+                            <span>Reset Form</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Status / Alert Message Box -->
+                <div id="alertBox" class="alert-box hidden" role="alert">
+                    <span id="alertIcon" class="alert-icon">&#9888;</span>
+                    <span id="alertMessage" class="alert-msg"></span>
+                </div>
+
+                <!-- Result Display Section -->
+                <div class="result-section">
+                    <div class="result-header">
+                        <span class="result-badge">CALCULATION RESULT</span>
+                        <button type="button" id="btnCopyResult" class="btn-copy" title="Copy result to clipboard">
+                            <span id="copyIcon">&#128203;</span>
+                            <span id="copyText">Copy Result</span>
+                        </button>
+                    </div>
+
+                    <!-- Readonly Form Output Field -->
+                    <div class="result-display-box">
+                        <div class="result-equation" id="resultEquation">Formula: —</div>
+                        <input 
+                            type="text" 
+                            id="resultField" 
+                            class="result-input" 
+                            readonly 
+                            value="—" 
+                            aria-label="Computed Result"
+                        >
+                    </div>
+
+                    <div class="result-footer">
+                        <span id="calculationTime">Ready for calculation</span>
+                        <span class="precision-tag">Precision: up to 8 decimals</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Card: Quick Presets & Calculation History -->
+            <section class="card side-card">
+                <!-- Preset Demos for Lab Evaluation -->
+                <div class="side-block">
+                    <h3 class="side-title">
+                        <span class="side-icon">&#9889;</span>
+                        <span>Quick Test Presets</span>
+                    </h3>
+                    <p class="side-desc">Click any sample scenario to instantly populate and run the calculation:</p>
+                    <div class="preset-chips">
+                        <button type="button" class="preset-chip" data-n1="125" data-n2="45" data-op="add">
+                            <b>Addition:</b> 125 + 45
+                        </button>
+                        <button type="button" class="preset-chip" data-n1="350" data-n2="175" data-op="subtract">
+                            <b>Subtraction:</b> 350 &minus; 175
+                        </button>
+                        <button type="button" class="preset-chip" data-n1="42.5" data-n2="8" data-op="multiply">
+                            <b>Multiplication:</b> 42.5 &times; 8
+                        </button>
+                        <button type="button" class="preset-chip" data-n1="99" data-n2="3" data-op="divide">
+                            <b>Division:</b> 99 &divide; 3
+                        </button>
+                        <button type="button" class="preset-chip error-test" data-n1="48" data-n2="0" data-op="divide">
+                            <b>Division by Zero test:</b> 48 &divide; 0
+                        </button>
+                        <button type="button" class="preset-chip" data-n1="2" data-n2="10" data-op="power">
+                            <b>Power:</b> 2¹⁰
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Calculation History Log -->
+                <div class="side-block history-block">
+                    <div class="history-header">
+                        <h3 class="side-title">
+                            <span class="side-icon">&#128337;</span>
+                            <span>Session History (<span id="historyCount">0</span>)</span>
+                        </h3>
+                        <button type="button" id="btnClearHistory" class="btn-clear-history" title="Clear all calculations from history">
+                            Clear
+                        </button>
+                    </div>
+
+                    <div id="historyList" class="history-list">
+                        <div class="empty-history" id="emptyHistoryNotice">
+                            <div class="empty-icon">&#128452;</div>
+                            <p>No calculations performed yet in this session.</p>
+                            <small>Results will appear here automatically.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Concepts Card -->
+                <div class="side-block info-block">
+                    <h4 class="info-title">&#128218; Lab 7 Implementation Details</h4>
+                    <ul class="info-list">
+                        <li><b>Form Controls:</b> Uses <code>&lt;input type="number"&gt;</code>, <code>&lt;select&gt;</code>, buttons and <code>&lt;input readonly&gt;</code>.</li>
+                        <li><b>JavaScript:</b> Event listeners, mathematical operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>Math.pow</code>).</li>
+                        <li><b>Zero Division Guard:</b> Traps division by 0 and alerts user.</li>
+                        <li><b>Decimals &amp; Floats:</b> Supports <code>parseFloat</code> with IEEE float handling.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p>Web Programming Laboratory &bull; Lab 07 Solution &bull; Vanilla HTML, CSS &amp; JavaScript</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script src="script.js"></script>
+</body>
+</html>

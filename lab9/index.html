@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 9: Load, parse, and display XML data into an interactive HTML table using JavaScript DOMParser and Fetch API.">
+    <title>Lab 9 - XML Data Table Viewer &amp; Parser</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <span class="brand-badge">WP LABS</span>
+                <span class="brand-title">&larr; Back to Dashboard</span>
+            </a>
+            <div class="nav-links">
+                <a href="../lab8/index.html" class="nav-prev-link">&larr; Lab 8</a>
+                <span class="active-lab-tag">Lab 09: XML Parser</span>
+                <a href="../lab7/index.html" class="nav-next-link">Lab 7 Calculator &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-wrapper">
+        <!-- Hero Header -->
+        <div class="header-intro">
+            <div class="lab-pill">Lab Exercise 09 &bull; XML &amp; JavaScript</div>
+            <h1 class="page-title">XML Data Table Viewer</h1>
+            <p class="page-subtitle">
+                Asynchronously load, parse, and present structured XML data from <code>books.xml</code> using JavaScript <code>DOMParser</code>, modern DOM extraction, real-time filtering, and column sorting.
+            </p>
+        </div>
+
+        <!-- Live Statistics Strip -->
+        <section class="stats-strip" id="statsStrip">
+            <div class="stat-card">
+                <div class="stat-icon">&#128218;</div>
+                <div class="stat-meta">
+                    <span class="stat-val" id="statTotalBooks">0</span>
+                    <span class="stat-lbl">Total Books Loaded</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">&#127991;</div>
+                <div class="stat-meta">
+                    <span class="stat-val" id="statCategories">0</span>
+                    <span class="stat-lbl">Unique Categories</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">&#128178;</div>
+                <div class="stat-meta">
+                    <span class="stat-val" id="statAvgPrice">$0.00</span>
+                    <span class="stat-lbl">Average Book Price</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">&#11088;</div>
+                <div class="stat-meta">
+                    <span class="stat-val" id="statAvgRating">0.0</span>
+                    <span class="stat-lbl">Average Rating</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Workspace Card -->
+        <div class="viewer-card">
+            <!-- Toolbar: Action Buttons & Search -->
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <button type="button" id="btnLoadXML" class="btn btn-primary" title="Fetch and parse books.xml">
+                        <span class="btn-icon">&#128260;</span>
+                        <span id="loadBtnText">Load XML Data</span>
+                    </button>
+                    <label class="btn btn-secondary file-upload-btn" title="Upload and parse your own XML file">
+                        <span class="btn-icon">&#128194;</span>
+                        <span>Upload Custom XML</span>
+                        <input type="file" id="fileUploadInput" accept=".xml,text/xml" style="display: none;">
+                    </label>
+                    <button type="button" id="btnToggleXmlViewer" class="btn btn-ghost" title="View or edit raw XML code">
+                        <span class="btn-icon">&#128196;</span>
+                        <span>View / Edit Raw XML</span>
+                    </button>
+                    <button type="button" id="btnOpenAddModal" class="btn btn-accent" title="Append a new book to the XML DOM">
+                        <span class="btn-icon">&#65291;</span>
+                        <span>Add New Book</span>
+                    </button>
+                </div>
+
+                <div class="toolbar-right">
+                    <!-- Search Input -->
+                    <div class="search-box">
+                        <span class="search-icon">&#128269;</span>
+                        <input 
+                            type="text" 
+                            id="tableSearchInput" 
+                            class="search-input" 
+                            placeholder="Filter by title, author, or ID..."
+                            aria-label="Filter XML Table"
+                        >
+                        <button type="button" id="btnClearSearch" class="btn-clear-search hidden">&times;</button>
+                    </div>
+
+                    <!-- Category Filter Dropdown -->
+                    <div class="category-filter-box">
+                        <select id="categoryFilterSelect" class="category-select" aria-label="Filter by Category">
+                            <option value="ALL">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Banner -->
+            <div id="statusBanner" class="status-banner" role="status">
+                <span class="status-indicator"></span>
+                <span id="statusMessage">Click <b>"Load XML Data"</b> to read from <code>books.xml</code> and render the interactive table.</span>
+            </div>
+
+            <!-- Raw XML Collapsible Code Editor Drawer -->
+            <div id="rawXmlDrawer" class="raw-xml-drawer hidden">
+                <div class="drawer-header">
+                    <div class="drawer-title">
+                        <span class="drawer-icon">&lt;/&gt;</span>
+                        <span>Raw XML Document Source (DOM Tree)</span>
+                    </div>
+                    <div class="drawer-actions">
+                        <button type="button" id="btnApplyXmlEdit" class="btn-mini btn-primary" title="Apply changes and re-render table">
+                            Apply &amp; Re-render
+                        </button>
+                        <button type="button" id="btnDownloadXml" class="btn-mini btn-secondary" title="Download current XML file">
+                            Download XML
+                        </button>
+                        <button type="button" id="btnCloseDrawer" class="btn-close-drawer" title="Close editor">&times;</button>
+                    </div>
+                </div>
+                <textarea id="rawXmlTextarea" class="xml-textarea" spellcheck="false" placeholder="XML document content will appear here..."></textarea>
+            </div>
+
+            <!-- Table Container -->
+            <div class="table-responsive" id="tableContainer">
+                <table class="xml-data-table" id="xmlTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="id" class="sortable" title="Click to sort by ID">
+                                <span>Book ID</span>
+                                <span class="sort-icon">&#8645;</span>
+                            </th>
+                            <th data-sort="category" class="sortable" title="Click to sort by Category">
+                                <span>Category</span>
+                                <span class="sort-icon">&#8645;</span>
+                            </th>
+                            <th data-sort="title" class="sortable" title="Click to sort by Title">
+                                <span>Title</span>
+                                <span class="sort-icon">&#8645;</span>
+                            </th>
+                            <th data-sort="author" class="sortable" title="Click to sort by Author">
+                                <span>Author</span>
+                                <span class="sort-icon">&#8645;</span>
+                            </th>
+                            <th data-sort="year" class="sortable" title="Click to sort by Year">
+                                <span>Year</span>
+                                <span class="sort-icon">&#8645;</span>
+                            </th>
+                            <th data-sort="rating" class="sortable" title="Click to sort by Rating">
+                                <span>Rating</span>
+                                <span class="sort-icon">&#8645;</span>
+                            </th>
+                            <th data-sort="price" class="sortable" title="Click to sort by Price">
+                                <span>Price</span>
+                                <span class="sort-icon">&#8645;</span>
+                            </th>
+                            <th class="actions-col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="xmlTableBody">
+                        <!-- Populated dynamically via JavaScript DOM manipulation -->
+                    </tbody>
+                </table>
+
+                <!-- Initial Empty / Waiting State -->
+                <div id="initialEmptyState" class="empty-table-state">
+                    <div class="empty-icon">&#128451;</div>
+                    <h3>No XML Data Rendered Yet</h3>
+                    <p>Click the <b>"Load XML Data"</b> button above to asynchronously fetch and parse <code>books.xml</code>.</p>
+                </div>
+
+                <!-- No Matching Search Results State -->
+                <div id="noResultsState" class="empty-table-state hidden">
+                    <div class="empty-icon">&#128270;</div>
+                    <h3>No Matching Books Found</h3>
+                    <p>Try refining your search keyword or clearing the category filter.</p>
+                </div>
+            </div>
+
+            <!-- Table Footer Details -->
+            <div class="table-footer-info" id="tableFooterInfo">
+                <span id="resultsCount">0 entries</span>
+                <span class="hint-text">💡 Tip: Click any column header to sort ascending or descending.</span>
+            </div>
+        </div>
+
+        <!-- Technical Guide & Viva Questions Box -->
+        <div class="tech-guide-grid">
+            <div class="guide-card">
+                <div class="guide-title">&#128736; Core XML DOM Parser Concepts</div>
+                <ul class="guide-list">
+                    <li><b>Fetch / AJAX Request:</b> Retrieves raw text content of <code>books.xml</code> asynchronously without page refresh.</li>
+                    <li><b>DOMParser API:</b> Converts XML string into a navigable XML Document Object via <code>new DOMParser().parseFromString(xmlString, "text/xml")</code>.</li>
+                    <li><b>Attribute Extraction:</b> Reads <code>id</code> and <code>category</code> via <code>node.getAttribute("attributeName")</code>.</li>
+                    <li><b>Node Traversal:</b> Extracts child elements (<code>&lt;title&gt;</code>, <code>&lt;author&gt;</code>, <code>&lt;price&gt;</code>) using <code>getElementsByTagName()</code> and <code>textContent</code>.</li>
+                </ul>
+            </div>
+
+            <div class="guide-card">
+                <div class="guide-title">&#128161; XML DOM vs HTML DOM</div>
+                <ul class="guide-list">
+                    <li><b>Case Sensitivity:</b> XML tags are strictly case-sensitive, unlike HTML.</li>
+                    <li><b>Strict Well-Formedness:</b> Missing end tags or improper nesting produces a <code>&lt;parsererror&gt;</code> node.</li>
+                    <li><b>Extensible Schema:</b> Custom tags like <code>&lt;book&gt;</code>, <code>&lt;rating&gt;</code>, and <code>&lt;price&gt;</code> convey data semantics rather than layout.</li>
+                    <li><b>Interoperability:</b> Standardized exchange format across heterogeneous platforms.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Dialog: Add New Book to XML -->
+    <div id="addBookModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">&#65291; Add Book to XML DOM</h3>
+                <button type="button" id="btnCloseModal" class="btn-close-modal">&times;</button>
+            </div>
+            <form id="addBookForm" class="modal-form">
+                <div class="form-row two-col">
+                    <div class="form-group">
+                        <label for="bookId" class="form-label">Book ID (Attribute)</label>
+                        <input type="text" id="bookId" class="modal-input" placeholder="e.g. BK107" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookCategory" class="form-label">Category (Attribute)</label>
+                        <input type="text" id="bookCategory" class="modal-input" placeholder="e.g. Cloud Computing" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookTitle" class="form-label">Title</label>
+                    <input type="text" id="bookTitle" class="modal-input" placeholder="e.g. Modern Web Architecture" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookAuthor" class="form-label">Author</label>
+                    <input type="text" id="bookAuthor" class="modal-input" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="bookPrice" class="form-label">Price ($)</label>
+                        <input type="number" step="0.01" id="bookPrice" class="modal-input" placeholder="45.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookYear" class="form-label">Year</label>
+                        <input type="number" id="bookYear" class="modal-input" placeholder="2024" value="2024" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookRating" class="form-label">Rating (0-5)</label>
+                        <input type="number" step="0.1" min="1" max="5" id="bookRating" class="modal-input" placeholder="4.8" value="4.8" required>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="btnCancelModal" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Append Node &amp; Update XML</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden" role="alert">
+        <span id="toastIcon">&#10004;</span>
+        <span id="toastMsg">Action completed successfully.</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p>Web Programming Laboratory &bull; Lab 09 Solution &bull; Vanilla HTML5, CSS3 &amp; JavaScript XML DOM</p>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

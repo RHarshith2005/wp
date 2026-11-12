@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 8: User Information Capture form using form elements and JavaScript to capture and pass data to other pages.">
+    <title>Lab 8 - User Information Capture Form</title>
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <span class="brand-badge">WP LABS</span>
+                <span class="brand-title">&larr; Back to Dashboard</span>
+            </a>
+            <div class="nav-links">
+                <a href="../lab7/index.html" class="nav-prev-link">&larr; Lab 7</a>
+                <span class="active-lab-tag">Lab 08: User Capture Form</span>
+                <a href="display.html" class="nav-display-link">View Profile Page &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+        <div class="header-intro">
+            <div class="lab-pill">Lab Exercise 08</div>
+            <h1 class="page-title">User Information Capture</h1>
+            <p class="page-subtitle">
+                Capture user demographics (Name, Gender, Mobile Number, Mail ID, City, State, Country) via form controls and transmit to subsequent pages using JavaScript.
+            </p>
+        </div>
+
+        <div class="form-container-card">
+            <!-- Form Header -->
+            <div class="form-card-header">
+                <div class="header-icon">&#128100;</div>
+                <div class="header-text">
+                    <h2 class="form-card-title" id="formHeaderTitle">User Registration Form</h2>
+                    <p class="form-card-desc">All fields marked with an asterisk (<span class="req">*</span>) are mandatory.</p>
+                </div>
+                <div class="header-action">
+                    <button type="button" id="btnFillSample" class="btn-sample" title="Auto-populate with sample test data">
+                        <span>&#9889; Fill Sample Data</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Edit Mode Banner (hidden by default) -->
+            <div id="editModeBanner" class="edit-banner hidden">
+                <span class="edit-icon">&#9999;</span>
+                <span>You are currently editing an existing user record. Updates will be saved on submission.</span>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="userRegistrationForm" class="registration-form" novalidate>
+                <!-- Full Name -->
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="fullName" class="form-label">
+                            <span>Full Name</span>
+                            <span class="req">*</span>
+                        </label>
+                        <div class="input-container">
+                            <span class="field-icon">&#128100;</span>
+                            <input 
+                                type="text" 
+                                id="fullName" 
+                                name="fullName" 
+                                class="form-input" 
+                                placeholder="Enter full name (e.g., Harshith R)" 
+                                required 
+                                minlength="2"
+                                autocomplete="name"
+                            >
+                        </div>
+                        <div class="field-feedback" id="nameFeedback"></div>
+                    </div>
+                </div>
+
+                <!-- Gender (Radio Buttons) -->
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label class="form-label">
+                            <span>Gender</span>
+                            <span class="req">*</span>
+                        </label>
+                        <div class="gender-radio-group" role="radiogroup" aria-label="Gender Selection">
+                            <label class="radio-card" for="genderMale">
+                                <input type="radio" name="gender" id="genderMale" value="Male" required>
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">&#128104; Male</span>
+                            </label>
+                            <label class="radio-card" for="genderFemale">
+                                <input type="radio" name="gender" id="genderFemale" value="Female">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">&#128105; Female</span>
+                            </label>
+                            <label class="radio-card" for="genderOther">
+                                <input type="radio" name="gender" id="genderOther" value="Other">
+                                <span class="radio-custom"></span>
+                                <span class="radio-label">&#129489; Other / Prefer not to say</span>
+                            </label>
+                        </div>
+                        <div class="field-feedback" id="genderFeedback"></div>
+                    </div>
+                </div>
+
+                <!-- Mobile Number & Mail ID -->
+                <div class="form-row two-col">
+                    <!-- Mobile Number -->
+                    <div class="form-group">
+                        <label for="mobile" class="form-label">
+                            <span>Mobile Number</span>
+                            <span class="req">*</span>
+                        </label>
+                        <div class="input-container">
+                            <span class="field-icon">&#128222;</span>
+                            <input 
+                                type="tel" 
+                                id="mobile" 
+                                name="mobile" 
+                                class="form-input" 
+                                placeholder="10-digit number (e.g. 9876543210)" 
+                                required 
+                                pattern="[0-9]{10}"
+                                maxlength="10"
+                                autocomplete="tel"
+                            >
+                        </div>
+                        <div class="field-feedback" id="mobileFeedback"></div>
+                    </div>
+
+                    <!-- Mail ID -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <span>Mail ID (Email Address)</span>
+                            <span class="req">*</span>
+                        </label>
+                        <div class="input-container">
+                            <span class="field-icon">&#9993;</span>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="name@domain.com" 
+                                required 
+                                autocomplete="email"
+                            >
+                        </div>
+                        <div class="field-feedback" id="emailFeedback"></div>
+                    </div>
+                </div>
+
+                <!-- Location: City, State, Country -->
+                <div class="form-row three-col">
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="city" class="form-label">
+                            <span>City</span>
+                            <span class="req">*</span>
+                        </label>
+                        <div class="input-container">
+                            <span class="field-icon">&#127961;</span>
+                            <input 
+                                type="text" 
+                                id="city" 
+                                name="city" 
+                                class="form-input" 
+                                placeholder="e.g., Bengaluru" 
+                                required 
+                                autocomplete="address-level2"
+                            >
+                        </div>
+                        <div class="field-feedback" id="cityFeedback"></div>
+                    </div>
+
+                    <!-- State -->
+                    <div class="form-group">
+                        <label for="state" class="form-label">
+                            <span>State / Province</span>
+                            <span class="req">*</span>
+                        </label>
+                        <div class="input-container select-container">
+                            <span class="field-icon">&#128506;</span>
+                            <select id="state" name="state" class="form-select" required>
+                                <option value="" disabled selected>Select State</option>
+                                <optgroup label="Popular States in India">
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Delhi (NCR)">Delhi (NCR)</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                </optgroup>
+                                <optgroup label="Other States & Territories">
+                                    <option value="Goa">Goa</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="California">California (USA)</option>
+                                    <option value="New York">New York (USA)</option>
+                                    <option value="Ontario">Ontario (Canada)</option>
+                                    <option value="London">Greater London (UK)</option>
+                                    <option value="New South Wales">New South Wales (Australia)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="field-feedback" id="stateFeedback"></div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="form-group">
+                        <label for="country" class="form-label">
+                            <span>Country</span>
+                            <span class="req">*</span>
+                        </label>
+                        <div class="input-container select-container">
+                            <span class="field-icon">&#127757;</span>
+                            <select id="country" name="country" class="form-select" required>
+                                <option value="" disabled selected>Select Country</option>
+                                <option value="India">🇮🇳 India</option>
+                                <option value="United States">🇺🇸 United States</option>
+                                <option value="United Kingdom">🇬🇧 United Kingdom</option>
+                                <option value="Canada">🇨🇦 Canada</option>
+                                <option value="Australia">🇦🇺 Australia</option>
+                                <option value="Germany">🇩🇪 Germany</option>
+                                <option value="Singapore">🇸🇬 Singapore</option>
+                                <option value="United Arab Emirates">🇦🇪 UAE</option>
+                                <option value="Japan">🇯🇵 Japan</option>
+                                <option value="France">🇫🇷 France</option>
+                            </select>
+                        </div>
+                        <div class="field-feedback" id="countryFeedback"></div>
+                    </div>
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="form-actions-row">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">
+                        <span class="btn-icon">&#10148;</span>
+                        <span id="btnSubmitText">Submit &amp; Display on Next Page</span>
+                    </button>
+                    <button type="reset" id="btnReset" class="btn btn-secondary">
+                        <span class="btn-icon">&#10227;</span>
+                        <span>Clear Form</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Technical Architecture Card -->
+            <div class="arch-card">
+                <div class="arch-header">&#128736; How JavaScript Passes Form Data to Other Pages</div>
+                <div class="arch-grid">
+                    <div class="arch-item">
+                        <b>1. Web Storage (sessionStorage / localStorage)</b>
+                        <p>Structured JSON objects are persisted across page transitions without backend dependencies.</p>
+                    </div>
+                    <div class="arch-item">
+                        <b>2. URL Query Parameters (URLSearchParams)</b>
+                        <p>Data is also encoded in the destination URL (<code>display.html?name=...</code>) as an interoperable alternative.</p>
+                    </div>
+                    <div class="arch-item">
+                        <b>3. Two-Way State Sync</b>
+                        <p>The display page includes an <i>"Edit"</i> button that returns here with pre-filled inputs for seamless modification.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p>Web Programming Laboratory &bull; Lab 08 Solution &bull; Vanilla HTML5, CSS3 &amp; JavaScript</p>
+    </footer>
+
+    <!-- Form script -->
+    <script src="form.js"></script>
+</body>
+</html>

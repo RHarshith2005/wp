@@ -1,6 +1,6 @@
 # Web Programming Laboratory (HTML5, CSS & JavaScript)
 
-This repository contains clean, standard-compliant implementations for academic Web Programming Laboratory exercises (Lab 1 through Lab 5), developed in pure HTML5, CSS3, and vanilla JavaScript.
+This repository contains clean, standard-compliant implementations for academic Web Programming Laboratory exercises (Lab 1 through Lab 9), developed in pure HTML5, CSS3, and vanilla JavaScript.
 
 ---
 
@@ -38,9 +38,32 @@ d:\wb\
 ├── lab4/                         # Lab 4: Country & Capital Selector with CSS
 │   └── index.html                # Dropdown selection with custom CSS font properties
 │
-└── lab5/                         # Lab 5: College Portal Webpage
-    ├── index.html                # College portal with background, typography & marquee
-    └── campus_bg.svg             # Scalable campus illustration background
+├── lab5/                         # Lab 5: College Portal Webpage
+│   ├── index.html                # College portal with background, typography & marquee
+│   └── campus_bg.svg             # Scalable campus illustration background
+│
+├── lab6/                         # Lab 6: Bengaluru City Showcase
+│   ├── index.html                # Semantic HTML5 city showcase webpage
+│   ├── style.css                 # Pure Vanilla CSS3 design system & responsive layout
+│   └── images/                   # HD photography (Vidhana Soudha, Lalbagh, Tech Park, Cuisine)
+│
+├── lab7/                         # Lab 7: Mathematical Calculations Web Page
+│   ├── index.html                # Form calculator UI with interactive operand controls
+│   ├── style.css                 # Modern dark-mode card styling & responsive grid
+│   └── script.js                 # Arithmetic logic (+, -, *, /, %, ^), division-by-zero checks & history
+│
+├── lab8/                         # Lab 8: User Information Capture & Inter-Page Display
+│   ├── index.html                # Registration form (Name, Gender, Mobile, Email, City, State, Country)
+│   ├── display.html              # Dynamic user profile card displaying transmitted data
+│   ├── style.css                 # Form & profile card design with print/PDF optimization
+│   ├── form.js                   # Live validation, sample auto-fill & data passing
+│   └── display.js                # Profile rendering from sessionStorage/URL params, edit & JSON export
+│
+└── lab9/                         # Lab 9: XML Data Table Viewer & Parser
+    ├── index.html                # Interactive XML data viewer UI with filter, sort & stat cards
+    ├── books.xml                 # Structured XML book catalog dataset
+    ├── style.css                 # Oceanic slate dark-mode styling & modal dialogs
+    └── script.js                 # DOMParser, node extraction, category filtering, search & XML DOM manipulation
 ```
 
 ---
@@ -97,6 +120,85 @@ d:\wb\
   * **(d)** List of courses offered, each styled in a **different color**, **style** (italic, oblique, bold, underline), and **typeface** (`Trebuchet MS`, `Georgia`, `Courier New`, `Arial Black`, `Verdana`, `Palatino`).
   * **(e)** Continuous scrolling text (`<marquee>`) displaying upcoming exam schedules, deadlines, and festival dates.
 * **Location:** `lab5/index.html`
+
+---
+
+### 🔹 Lab 6: City of Bengaluru Showcase (HTML5 & Modern CSS3)
+* **Objective:** Design an aesthetic, modern, and informative web page about Bengaluru (Bangalore) with clean HTML structure and CSS styling.
+* **Key Concepts:**
+  * **Semantic HTML5:** `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<table>`, `<footer>`, `figure`.
+  * **Modern CSS3:** CSS variables, flexbox, CSS grid, glassmorphism (`backdrop-filter`), card hover elevation, responsive media queries.
+  * **Content Sections:**
+    * Hero section with banner imagery and quick stat badges.
+    * History and origin of the name (*Benda-Kaalu-Uru*).
+    * Iconic landmarks: **Vidhana Soudha** and **Lalbagh Botanical Garden Glass House**.
+    * **Silicon Valley of India**: Technology corridors, IT hubs (Electronic City, Manyata, Whitefield), research institutes (IISc, ISRO).
+    * **Culinary Heritage**: Benne Masala Dosa, Filter Kaapi, Thatte Idli, and legendary Darshini cafes.
+    * **At-a-Glance Fact Table**: Styled tabular reference of geography, nicknames, and transit.
+* **Location:** `lab6/index.html`
+
+---
+
+### 🔹 Lab 7: Mathematical Calculations with Form Elements & JavaScript
+* **Objective:** Design a web page to perform mathematical calculations such as addition, subtraction, multiplication, and division using form elements and JavaScript.
+* **Key Concepts:**
+  * **Form Elements:** `<input type="number">` operands, `<select>` operation dropdown, radio-style operator button matrix (`+`, `−`, `×`, `÷`, `%`, `xʸ`), action buttons (`Calculate`, `Reset Form`, `Swap Numbers`, `Toggle Sign`), and readonly `<input>` result display.
+  * **Arithmetic Operations & JavaScript Engine:**
+    * Addition: `n1 + n2`
+    * Subtraction: `n1 - n2`
+    * Multiplication: `n1 * n2`
+    * Division: `n1 / n2` with strict zero-division checking and friendly alert handling.
+    * Bonus Operations: Modulo (`n1 % n2`) and Exponentiation (`Math.pow(n1, n2)`).
+  * **Validation & Precision:** Comprehensive handling for empty fields, `NaN`, floating-point precision round-off (IEEE 754 cleanup up to 8 decimal places), and division-by-zero guards.
+  * **Interactive UX:** Clipboard one-click copying, quick test preset chips (instant evaluation test runs), and session calculation history log with reload capability.
+* **Location:** `lab7/index.html`
+
+---
+
+### 🔹 Lab 8: User Information Capture & Inter-Page Display
+* **Objective:** Design a web page to capture user information (name, gender, mobile number, mail id, city, state, country) using form elements and display them into other pages using JavaScript.
+* **Key Concepts:**
+  * **Form Capture Controls:**
+    * Full Name: `<input type="text" required minlength="2">`
+    * Gender: Custom-styled `<input type="radio">` cards for Male, Female, Other
+    * Mobile Number: `<input type="tel" pattern="[0-9]{10}" maxlength="10">` with numeric filtering
+    * Mail ID: `<input type="email">` with RFC compliant regex pattern validation
+    * City: `<input type="text">`
+    * State: Grouped `<select>` dropdown (Indian States & Territories)
+    * Country: `<select>` dropdown with national flags
+  * **Live Client-Side Validation:** Real-time green/red feedback indicators and messages as the user types; prevents invalid submissions.
+  * **Inter-Page Data Transmission (JavaScript):**
+    * **Web Storage API:** Serializes user record to JSON in `sessionStorage` and `localStorage`.
+    * **URL Query Parameters:** Constructs standard query string via `new URLSearchParams(userData)` for URL-based passing (`display.html?name=...`).
+  * **Profile Showcase Destination Page (`display.html`):**
+    * Dynamically parses received data from storage / URL parameters.
+    * Renders an ID Profile Card featuring dynamic avatar monogram (e.g., initials "HR"), verification badge, formatted details grid, and clickable `tel:` and `mailto:` links.
+    * Interactive actions: **Edit Information** (redirects back to form with pre-filled fields), **Print Profile / Save as PDF** (`window.print()` with `@media print` optimized CSS), **Export JSON**, and **Clear Profile**.
+    * Handles empty states gracefully if accessed directly without submitting data.
+* **Location:** `lab8/index.html` (Form) &amp; `lab8/display.html` (Profile Display)
+
+---
+
+### 🔹 Lab 9: XML Data Table Viewer & Parser (DOMParser & JavaScript)
+* **Objective:** Design a web page to load, parse, and display XML data into an interactive HTML table using JavaScript.
+* **Key Concepts:**
+  * **Asynchronous XML Fetching:** Uses the Fetch API / `XMLHttpRequest` to read external `books.xml` without page refreshes.
+  * **Safe-Mode Protocol Resilience:** Includes automatic fallback for `file:///` local browsing environments to prevent browser CORS origin-null blocking.
+  * **DOMParser Interface:**
+    * Instantiates `new DOMParser()`.
+    * Parses text into an XML Document Tree via `parseFromString(xmlString, "text/xml")`.
+    * Validates against `<parsererror>` tags for well-formedness.
+  * **DOM Traversal & Node Extraction:**
+    * Extracts node attributes: `node.getAttribute("id")`, `node.getAttribute("category")`.
+    * Extracts child element content: `getElementsByTagName("title")[0].textContent`, author, price, year, rating.
+  * **Interactive Table Capabilities:**
+    * Real-time search filtering across title, author, category, and ID.
+    * Category dropdown filter with color-coded badges (Computer Science, Web Development, Cloud Computing, Database, AI, Cybersecurity).
+    * Bi-directional column sorting (click any header to sort ASC/DESC).
+    * Dynamic aggregation stats strip: Total Books, Unique Categories, Average Price, and Average Rating.
+    * Live XML DOM Manipulation: **"+ Add New Book"** modal appends a new `<book>` node into the XML DOM tree, **"Delete"** removes nodes, and **"View / Edit Raw XML"** lets users inspect, edit, or download the updated XML file.
+* **Location:** `lab9/index.html` | `lab9/books.xml`
+* **Downloads Copy:** Also synchronized at `C:\Users\DELL\Downloads\lab9\lab9\`
 
 ---
 

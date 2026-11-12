@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 6: Bengaluru - The Garden City & Silicon Valley of India. Explore heritage, technology, cuisine, and culture with clean HTML and CSS.">
+    <title>Lab 6 - Bengaluru: The Garden City & Silicon Valley of India</title>
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="navbar" id="top">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-badge">LAB 06</span>
+                <span class="logo-title">ನಮ್ಮ <b>Bengaluru</b></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#landmarks" class="nav-link">Landmarks</a>
+                <a href="#tech" class="nav-link">Silicon Valley</a>
+                <a href="#cuisine" class="nav-link">Cuisine</a>
+                <a href="#facts" class="nav-link">Fast Facts</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Banner -->
+    <section class="hero-section" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tag">&#127793; The Garden City &bull; &#128187; Silicon Valley of India</span>
+            <h1 class="hero-title">Discover Bengaluru</h1>
+            <p class="hero-subtitle">
+                A harmonious blend of grand imperial heritage, perennial pleasant weather, lush green canopies, and world-class technological innovation.
+            </p>
+            <div class="hero-actions">
+                <a href="#landmarks" class="btn btn-primary">Explore City Highlights &darr;</a>
+                <a href="#facts" class="btn btn-outline">View Quick Stats</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Cards Strip -->
+    <section class="stats-strip">
+        <div class="container stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">&#127963;</div>
+                <div class="stat-number">1537 CE</div>
+                <div class="stat-label">Founded by Kempe Gowda I</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">&#9968;</div>
+                <div class="stat-number">920 m</div>
+                <div class="stat-label">Elevation above sea level</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">&#128640;</div>
+                <div class="stat-number">#1 Hub</div>
+                <div class="stat-label">IT &amp; Deep-Tech Startups in India</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">&#9728;&#65039;</div>
+                <div class="stat-number">24&deg;C</div>
+                <div class="stat-label">Average Annual Pleasant Climate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+
+        <!-- Section 1: About Bengaluru -->
+        <section class="section" id="about">
+            <div class="section-header">
+                <span class="section-tag">INTRODUCTION</span>
+                <h2 class="section-title">The Heart of Karnataka</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="lead-text">
+                        <b>Bengaluru</b> (formerly known as <em>Bangalore</em>) is the vibrant capital city of Karnataka, located in southern India on the Deccan Plateau.
+                    </p>
+                    <p>
+                        Renowned as the <strong>"Garden City of India"</strong> for its historic boulevards and sprawling lung spaces like Cubbon Park and Lalbagh, Bengaluru has transformed into the premier <strong>"Silicon Valley of India"</strong>, contributing over 35% of the nation's IT exports.
+                    </p>
+                    <p>
+                        Despite its rapid modernization, Bengaluru retains its soulful charm: crisp mornings scented with filter coffee, majestic colonial and Dravidian architecture, thriving theater and music scenes, and a warm cosmopolitan population.
+                    </p>
+                    <div class="feature-pills">
+                        <span class="pill">&#10004; Serene Botanical Gardens</span>
+                        <span class="pill">&#10004; Global Tech Headquarters</span>
+                        <span class="pill">&#10004; Thriving Craft Coffee &amp; Food</span>
+                        <span class="pill">&#10004; Premier Research: IISc &amp; ISRO</span>
+                    </div>
+                </div>
+
+                <div class="about-card-highlight">
+                    <div class="highlight-badge">Did You Know?</div>
+                    <h3>Origin of the Name</h3>
+                    <p>
+                        According to popular legend, King Veera Ballala II of the Hoysala dynasty lost his way in the forest. An elderly woman offered him boiled beans (*Benda Kaalu*). Grateful, he named the settlement <em>Benda-Kaalu-Uru</em> ("Town of Boiled Beans"), which eventually evolved into <strong>Bengaluru</strong>.
+                    </p>
+                    <div class="quote-box">
+                        "Bengaluru is not just a city; it is an emotion of pleasant breezes, ambitious dreams, and warm hospitality."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Architectural & Natural Landmarks -->
+        <section class="section" id="landmarks">
+            <div class="section-header">
+                <span class="section-tag">ICONIC ATTRACTIONS</span>
+                <h2 class="section-title">Landmarks That Define The Skyline</h2>
+                <div class="divider"></div>
+                <p class="section-desc">From monolithic neo-Dravidian government edifices to centuries-old royal botanical conservatories.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Landmark Card 1: Vidhana Soudha -->
+                <article class="landmark-card">
+                    <div class="card-image-wrap">
+                        <img src="images/vidhana_soudha.jpg" alt="Vidhana Soudha Bengaluru" class="card-img" loading="lazy">
+                        <span class="card-badge">Governance &amp; Heritage</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Vidhana Soudha</h3>
+                        <p class="card-text">
+                            Constructed in 1956 under Chief Minister Kengal Hanumanthaiah, this grand granite monument is the seat of Karnataka's state legislature. Combining Neo-Dravidian architectural craftsmanship with imposing granite pillars and four entrance porches, it stands illuminated with thousands of lights on festive evenings.
+                        </p>
+                        <div class="card-meta">
+                            <span>&#128205; Dr. Ambedkar Veedhi</span>
+                            <span>&#127963; Neo-Dravidian Granite</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Landmark Card 2: Lalbagh Glass House -->
+                <article class="landmark-card">
+                    <div class="card-image-wrap">
+                        <img src="images/lalbagh_glasshouse.jpg" alt="Lalbagh Glass House Bengaluru" class="card-img" loading="lazy">
+                        <span class="card-badge">Botanical Wonder</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Lalbagh Botanical Garden</h3>
+                        <p class="card-text">
+                            Commissioned by Hyder Ali in 1760 and completed by Tipu Sultan, Lalbagh spans 240 acres harboring over 1,800 species of flora and centuries-old trees. At its core stands the iconic Victorian Glass House modeled after London's Crystal Palace, host to the bi-annual world-famous Republic Day Flower Show.
+                        </p>
+                        <div class="card-meta">
+                            <span>&#128205; Mavalli, South Bengaluru</span>
+                            <span>&#127793; 240+ Acres Botanical Haven</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 3: Silicon Valley of India -->
+        <section class="section tech-feature-section" id="tech">
+            <div class="tech-layout">
+                <div class="tech-image-col">
+                    <div class="image-frame">
+                        <img src="images/tech_park.jpg" alt="Bengaluru Tech Park and Silicon Valley High Rises" class="frame-img" loading="lazy">
+                        <div class="image-caption-pill">&#128187; Modern IT Corridors &bull; Manyata, Electronic City &amp; Whitefield</div>
+                    </div>
+                </div>
+                <div class="tech-text-col">
+                    <span class="section-tag">ECONOMIC ENGINE</span>
+                    <h2 class="section-title">The Silicon Valley of India</h2>
+                    <div class="divider align-left"></div>
+                    <p>
+                        Bengaluru is globally celebrated as India's high-tech capital. It hosts the headquarters of technological titans such as <strong>Infosys</strong> and <strong>Wipro</strong>, the research labs of global giants (Google, Microsoft, Intel, Amazon, Apple, Cisco), and the nerve center of India's space program — <strong>ISRO</strong>.
+                    </p>
+                    <ul class="tech-highlights">
+                        <li>
+                            <div class="highlight-bullet">&#9670;</div>
+                            <div>
+                                <strong>Global Aerospace &amp; Research:</strong> Home to the Indian Institute of Science (IISc), Raman Research Institute, and HAL.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="highlight-bullet">&#9670;</div>
+                            <div>
+                                <strong>Unicorn Capital:</strong> Bengaluru is birthplace to India's largest tech startups including Flipkart, Swiggy, Zerodha, and Razorpay.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="highlight-bullet">&#9670;</div>
+                            <div>
+                                <strong>Sustainable Innovation:</strong> Next-generation campus designs with lush pedestrian greenways, water lakes, and metro connectivity.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Culture & Bengaluru Cuisine -->
+        <section class="section" id="cuisine">
+            <div class="section-header">
+                <span class="section-tag">CULINARY HERITAGE</span>
+                <h2 class="section-title">Flavors of Bengaluru: From Tiffin to Filter Coffee</h2>
+                <div class="divider"></div>
+                <p class="section-desc">Experience the mouth-watering vegetarian morning rituals and bustling Darshini cafes.</p>
+            </div>
+
+            <div class="cuisine-showcase">
+                <div class="cuisine-image-box">
+                    <img src="images/bengaluru_cuisine.jpg" alt="Traditional Bengaluru South Indian Breakfast with Dosa and Filter Coffee" class="cuisine-img" loading="lazy">
+                </div>
+                <div class="cuisine-info-box">
+                    <div class="cuisine-item">
+                        <div class="cuisine-icon">&#129367;</div>
+                        <div class="cuisine-details">
+                            <h4>Benne Masala Dosa</h4>
+                            <p>Golden, crispy exterior roasted with aromatic butter (benne), wrapped around spiced potato mash, served alongside fresh coconut and tangy spicy tomato chutney.</p>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-item">
+                        <div class="cuisine-icon">&#9749;</div>
+                        <div class="cuisine-details">
+                            <h4>Authentic Filter Kaapi</h4>
+                            <p>Brewed with freshly ground chicory-infused coffee beans, mixed with piping hot frothy milk, and poured gracefully back and forth in traditional brass dabara and tumbler sets.</p>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-item">
+                        <div class="cuisine-icon">&#127858;</div>
+                        <div class="cuisine-details">
+                            <h4>Thatte Idli &amp; Medu Vada</h4>
+                            <p>Pillow-soft plate-sized steamed rice cakes (*Thatte Idli*) bathed in aromatic clarified butter (ghee) and gun-powder (*chutney podi*), paired with crunchy golden lentil donuts (*vada*).</p>
+                        </div>
+                    </div>
+
+                    <div class="cuisine-item">
+                        <div class="cuisine-icon">&#127860;</div>
+                        <div class="cuisine-details">
+                            <h4>Legendary Heritage Cafes</h4>
+                            <p>Mavalli Tiffin Room (MTR), Vidyarthi Bhavan in Gandhi Bazaar, Central Tiffin Room (CTR / Shri Sagar) in Malleshwaram, and Brahmins' Coffee Bar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Fast Facts & Academic Lab Table -->
+        <section class="section" id="facts">
+            <div class="section-header">
+                <span class="section-tag">AT A GLANCE</span>
+                <h2 class="section-title">Bengaluru Key Facts &amp; Information</h2>
+                <div class="divider"></div>
+                <p class="section-desc">Summary profile demonstrating structured HTML table and CSS styling.</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="city-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Details &amp; Figures</th>
+                            <th>Significance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Official Language</strong></td>
+                            <td>Kannada (ಕನ್ನಡ)</td>
+                            <td>State language; English, Hindi, Telugu, and Tamil widely spoken</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Geographical Coordinates</strong></td>
+                            <td>12.9716&deg; N, 77.5946&deg; E</td>
+                            <td>Situated at ~920 meters atop Karnataka's southern plateau</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Famous Nicknames</strong></td>
+                            <td>Silicon Valley of India, Garden City, Pub Capital, Startup Capital</td>
+                            <td>Reflects diverse blend of ecology, technology, and youth culture</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Key Public Green Spaces</strong></td>
+                            <td>Lalbagh Botanical Garden, Cubbon Park, Bannerghatta National Park</td>
+                            <td>Provides natural biodiversity, jogging trails, and microclimate regulation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transit Infrastructure</strong></td>
+                            <td>Namma Metro (Purple &amp; Green Lines), Kempegowda Int'l Airport (BLR)</td>
+                            <td>BLR Airport Terminal 2 is recognized as one of the world's most beautiful</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Premier Academic Institutions</strong></td>
+                            <td>IISc, IIM-B, IIIT-B, NLSIU, RVCE, BMSCE, PES University</td>
+                            <td>Nations' leading centers for scientific research and higher education</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>ನಮ್ಮ Bengaluru</h3>
+                <p>The Garden City &bull; The Silicon Valley of India. Crafted with clean, semantic HTML5 and modern Vanilla CSS3.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">&rarr; City History</a></li>
+                    <li><a href="#landmarks">&rarr; Vidhana Soudha &amp; Lalbagh</a></li>
+                    <li><a href="#tech">&rarr; Silicon Valley Tech Hub</a></li>
+                    <li><a href="#cuisine">&rarr; South Indian Cuisine</a></li>
+                    <li><a href="#facts">&rarr; Fast Facts Table</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Experience The City</h4>
+                <p>From the pleasant morning breeze at Cubbon Park to aromatic filter kaapi in heritage cafes, experience the soul of Karnataka's capital.</p>
+                <a href="#top" class="btn btn-sm btn-outline">&uarr; Back to Top</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 City of Bengaluru Showcase | Made with &#9829; in Karnataka</p>
+        </div>
+    </footer>
+
+</body>
+</html>

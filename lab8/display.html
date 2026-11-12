@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 8: User Profile Display page showing captured user details received via JavaScript.">
+    <title>Lab 8 - Captured User Profile Display</title>
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="display-page-body">
+
+    <!-- Header Navigation (Hidden during print) -->
+    <header class="top-nav no-print">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <span class="brand-badge">WP LABS</span>
+                <span class="brand-title">&larr; Back to Dashboard</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-prev-link">&larr; Back to Registration Form</a>
+                <span class="active-lab-tag">Lab 08: Profile Display</span>
+                <a href="../lab7/index.html" class="nav-next-link">Lab 7 Calculator &rarr;</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+        <div class="header-intro no-print">
+            <div class="lab-pill">Lab Exercise 08 &bull; Destination Page</div>
+            <h1 class="page-title">Captured User Profile</h1>
+            <p class="page-subtitle">
+                This page dynamically retrieved the user's information transmitted from the registration form using JavaScript (Web Storage &amp; URLSearchParams).
+            </p>
+        </div>
+
+        <!-- 1. Populated Profile Container (Visible when user data exists) -->
+        <div id="profileContainer" class="profile-container-card hidden">
+            <!-- Profile Identity Card Banner -->
+            <div class="profile-hero">
+                <div class="avatar-wrapper">
+                    <div class="user-avatar" id="avatarInitials">US</div>
+                    <div class="avatar-badge" title="Verified Information">&#10004;</div>
+                </div>
+                <div class="profile-hero-info">
+                    <div class="hero-top-row">
+                        <span class="reg-id-badge" id="displayRegId">REG-2026-0000</span>
+                        <span class="gender-pill" id="displayGenderBadge">&#128104; Male</span>
+                        <span class="status-pill">&#9679; Active Profile</span>
+                    </div>
+                    <h2 class="profile-name" id="displayName">User Full Name</h2>
+                    <p class="profile-location" id="displayLocation">
+                        <span class="loc-icon">&#128205;</span>
+                        <span id="displayCityStateCountry">Bengaluru, Karnataka, India</span>
+                    </p>
+                </div>
+                <div class="hero-actions no-print">
+                    <button type="button" id="btnEditProfile" class="btn btn-secondary btn-sm" title="Modify your details">
+                        <span>&#9999; Edit Details</span>
+                    </button>
+                    <button type="button" id="btnPrintProfile" class="btn btn-primary btn-sm" title="Print this profile card">
+                        <span>&#128424; Print / Save PDF</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile Details Grid Table -->
+            <div class="details-section">
+                <div class="section-title-strip">
+                    <h3>Captured Information Attributes</h3>
+                    <span class="source-indicator" id="dataSourceBadge">Source: JavaScript sessionStorage</span>
+                </div>
+
+                <div class="details-table-grid">
+                    <!-- Name Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#128100;</span>
+                            <span class="cell-label">Full Name</span>
+                        </div>
+                        <div class="cell-value" id="valName">—</div>
+                    </div>
+
+                    <!-- Gender Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#9893;</span>
+                            <span class="cell-label">Gender</span>
+                        </div>
+                        <div class="cell-value" id="valGender">—</div>
+                    </div>
+
+                    <!-- Mobile Number Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#128222;</span>
+                            <span class="cell-label">Mobile Number</span>
+                        </div>
+                        <div class="cell-value action-value">
+                            <a href="#" id="valMobileLink" class="tel-link">—</a>
+                            <button type="button" class="btn-mini-copy" id="btnCopyMobile" title="Copy Mobile Number">&#128203;</button>
+                        </div>
+                    </div>
+
+                    <!-- Mail ID Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#9993;</span>
+                            <span class="cell-label">Mail ID (Email)</span>
+                        </div>
+                        <div class="cell-value action-value">
+                            <a href="#" id="valEmailLink" class="email-link">—</a>
+                            <button type="button" class="btn-mini-copy" id="btnCopyEmail" title="Copy Mail ID">&#128203;</button>
+                        </div>
+                    </div>
+
+                    <!-- City Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#127961;</span>
+                            <span class="cell-label">City</span>
+                        </div>
+                        <div class="cell-value" id="valCity">—</div>
+                    </div>
+
+                    <!-- State Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#128506;</span>
+                            <span class="cell-label">State / Province</span>
+                        </div>
+                        <div class="cell-value" id="valState">—</div>
+                    </div>
+
+                    <!-- Country Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#127757;</span>
+                            <span class="cell-label">Country</span>
+                        </div>
+                        <div class="cell-value" id="valCountry">—</div>
+                    </div>
+
+                    <!-- Capture Timestamp Attribute -->
+                    <div class="detail-cell">
+                        <div class="detail-meta">
+                            <span class="cell-icon">&#128337;</span>
+                            <span class="cell-label">Recorded At</span>
+                        </div>
+                        <div class="cell-value timestamp-value" id="valTimestamp">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Bottom Bar (no-print) -->
+            <div class="profile-footer-bar no-print">
+                <div class="footer-left-buttons">
+                    <button type="button" id="btnExportJson" class="btn-ghost" title="Download raw profile data as JSON file">
+                        <span>&#128190; Export as JSON</span>
+                    </button>
+                    <button type="button" id="btnClearProfile" class="btn-ghost danger" title="Clear saved user profile data">
+                        <span>&#128465; Clear Profile</span>
+                    </button>
+                </div>
+                <div class="footer-right-buttons">
+                    <a href="index.html" class="btn btn-secondary">
+                        <span>+ Register Another User</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Empty State Container (Visible when NO data is found) -->
+        <div id="emptyContainer" class="empty-state-card hidden">
+            <div class="empty-state-icon">&#128203;</div>
+            <h2 class="empty-state-title">No User Information Found</h2>
+            <p class="empty-state-desc">
+                No user profile data has been received yet. Please visit the registration form page and submit your user information.
+            </p>
+            <div class="empty-state-actions">
+                <a href="index.html" class="btn btn-primary">
+                    <span>&larr; Go to User Registration Form</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Notification Toast (no-print) -->
+        <div id="toast" class="toast hidden no-print" role="alert">
+            <span id="toastIcon">&#10004;</span>
+            <span id="toastText">Action completed successfully</span>
+        </div>
+    </main>
+
+    <!-- Footer (no-print) -->
+    <footer class="page-footer no-print">
+        <p>Web Programming Laboratory &bull; Lab 08 Solution &bull; Vanilla HTML5, CSS3 &amp; JavaScript</p>
+    </footer>
+
+    <!-- Display logic script -->
+    <script src="display.js"></script>
+</body>
+</html>
